@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <section>
+    <div class="form-group">
+      <label for="" class="form-label">Add Todo</label>
+      <div class="input-group">
+        <input class="form-control" type="text" [(ngModel)]="todo">
+        <button class="btn btn-primary" (click)="addTodo()">Add</button>
+      </div>
+    </div>
+  </section>
+  <section>
+    <hr>
+    <section>
+      <div class="d-flex justify-content-between">
+        <h3>Todos</h3>
+      <div class="btn-group">
+        <button class="btn btn-outline-warning" (click)="filter('in_progress')">In progress</button>
+        <button class="btn btn-outline-success" (click)="filter('done')" >Done</button>
+        <button class="btn btn-outline-primary" (click)="filter('all')" >All</button>
+      </div>
+      </div>
+      <ul class="list-group">
+        <li *ngFor="let todo of todosToShow" class="list-group-item d-flex justify-content-between">
+          <span>{{todo.title}}</span>
+          <input type = "checkbox" [(ngModel)]="todo.isChecked" (ngModelChange)="updateTooState(todo)">
+        </li>
+      </ul>
+    </section>
+  </section>
+</div>
